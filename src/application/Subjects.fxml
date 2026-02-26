@@ -40,9 +40,39 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="106.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="95.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/speechBubbleTEMP.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="95.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/frown.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="146.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Irish">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="140.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: italic;" text="62.3% (H4)">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text layoutX="128.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mathematics">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="140.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: italic;" text="70% (H3)">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="95.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/division.png" />
          </image>
       </ImageView>
    </children>
