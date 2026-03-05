@@ -14,12 +14,13 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
+    	
         String email = userEmail.getText();
 
         if (email == null || email.isEmpty()) {
             wrongLogin.setText("Please enter an email.");
         } else {
-            wrongLogin.setText("Login successful!");
+            wrongLogin.setText("Login is successful!");
             System.out.println("Email entered: " + email);
         }
     }
