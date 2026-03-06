@@ -27,4 +27,17 @@ public class Subject {
 	public void addGrade(Grade grade) {
 		grades.add(grade);
 	}
+	
+	public double getAverage() {
+
+	    if (grades.isEmpty()) return 0;
+
+	    double total = 0;
+
+	    for (Grade g : grades) {
+	        total += g.getScore();
+	    }
+
+	    return total / grades.size();
+	}
 }

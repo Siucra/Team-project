@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
@@ -27,6 +30,44 @@ public class SceneController {
 	
 	@FXML
 	private RadioButton ordinaryBtn;
+	
+	@FXML
+	private VBox subjectsContainer;
+	
+	@FXML
+	public void initialize() {
+
+		System.out.println(subjectsContainer);
+		
+	    // Example data
+		if (SubjectManager.subjects.isEmpty()) {
+
+	        Subject maths = new Subject("Maths", "Higher");
+	        maths.addGrade(new Grade(GradeType.CLASS_TEST, 80));
+	        maths.addGrade(new Grade(GradeType.EXAM, 90));
+
+	        SubjectManager.subjects.add(maths);
+	    }
+		
+	    if (subjectsContainer == null) {
+	        return;
+	    }
+	    
+		for (Subject s : SubjectManager.subjects) {
+
+            Text subjectName = new Text(s.getName());
+
+            Text subjectAverage = new Text(
+                String.format("%.1f%%", s.getAverage())
+            );
+
+            HBox row = new HBox(20);
+            row.getChildren().addAll(subjectName, subjectAverage);
+
+            subjectsContainer.getChildren().add(row);
+        }
+    }
+	
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
