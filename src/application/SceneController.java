@@ -21,7 +21,7 @@ public class SceneController {
 	private Parent root;
 	
 	@FXML 
-	private TextField subjectNameField;
+	private TextField subjectField;
 	
 	@FXML
 	private RadioButton higherBtn;
@@ -35,13 +35,21 @@ public class SceneController {
 	@FXML
 	private void selectedRadioBtn() {
 		RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
+		String subjectName = subjectField.getText();
 		
 		if (selected == null) {
-			// DO OUTPUT !!!!!!!!!!!
+			System.out.println("Please select a level");
+			return;
 		}
 		
+		
 		String level = selected.getText(); //either higher or ordinary
-		// DO OUTPUT !!!!!!!!!
+		
+		Subject newSubject = new Subject(subjectName, level);
+		
+		SubjectManager.subjects.add(newSubject);
+		
+		System.out.println("subject add: " + subjectName + "(" + level + ")");
 	}
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
@@ -61,7 +69,7 @@ public class SceneController {
 	}
 	
 	public void addSubjectAndReturn(ActionEvent event) throws IOException{
-		String name = subjectNameField.getText();
+		String name = subjectField.getText();
 		String level = "Ordinary";
 		
 		if (higherBtn.isSelected()) {
