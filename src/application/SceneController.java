@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
@@ -27,6 +28,21 @@ public class SceneController {
 	
 	@FXML
 	private RadioButton ordinaryBtn;
+	
+	@FXML 
+	private ToggleGroup levelButton;
+	
+	@FXML
+	private void selectedRadioBtn() {
+		RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
+		
+		if (selected == null) {
+			// DO OUTPUT !!!!!!!!!!!
+		}
+		
+		String level = selected.getText(); //either higher or ordinary
+		// DO OUTPUT !!!!!!!!!
+	}
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
@@ -57,4 +73,5 @@ public class SceneController {
 		
 		switchToSubjectScene(event);
 	}
+	
 }
