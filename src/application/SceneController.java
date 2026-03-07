@@ -12,6 +12,11 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.Priority;
+import javafx.geometry.Pos;
 
 import java.io.IOException;
 
@@ -47,6 +52,7 @@ public class SceneController {
 		// System.out.println(subjectsContainer);
 		
 	    // Example data
+		subjectsContainer.setSpacing(15);
 		
 		 if (SubjectManager.subjects.isEmpty()) {
 
@@ -62,6 +68,7 @@ public class SceneController {
 	        SubjectManager.subjects.add(maths);
 	        SubjectManager.subjects.add(english);
 	    }
+		 
 	    
 		
 	    if (subjectsContainer == null) {
@@ -79,13 +86,26 @@ public class SceneController {
 	    
 		for (Subject s : SubjectManager.subjects) {
 
-            Text subjectName = new Text(s.getName());
+			Text subjectName = new Text(s.getName());
 
-            Text subjectAverage = new Text(
-                String.format("%.1f%%", s.getAverage())
-            );
+			Text subjectAverage = new Text(
+			    String.format("%.1f%%", s.getAverage())
+			);
+
+			VBox subjectText = new VBox(3);
+			subjectText.setAlignment(Pos.CENTER);
+			subjectText.getChildren().addAll(subjectName, subjectAverage);
+			
+			
             
-            Button editBtn = new Button("Edit");
+            Image editIcon = new Image(getClass().getResourceAsStream("images/editSymbol.png"));
+            ImageView editView = new ImageView(editIcon);
+            editView.setFitWidth(18);
+            editView.setFitHeight(18);
+
+            Button editBtn = new Button();
+            editBtn.setGraphic(editView);
+            editBtn.setStyle("-fx-background-color: transparent;");
             
             editBtn.setOnAction(e -> {
                 System.out.println("Edit subject: " + s.getName());
@@ -93,7 +113,10 @@ public class SceneController {
             });
 
             HBox row = new HBox(20);
-            row.getChildren().addAll(subjectName, subjectAverage,editBtn);
+            row.prefWidthProperty().bind(subjectsContainer.widthProperty());
+            row.setMaxWidth(Double.MAX_VALUE);
+            HBox.setHgrow(subjectText, Priority.ALWAYS);
+            row.getChildren().addAll(subjectText, editBtn);
 
             subjectsContainer.getChildren().add(row);
         }
