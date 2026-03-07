@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +30,7 @@ public class SceneController {
 	private Parent root;
 	
 	@FXML 
-	private TextField subjectNameField;
+	private TextField subjectField;
 	
 	@FXML
 	private RadioButton higherBtn;
@@ -122,6 +123,28 @@ public class SceneController {
         }
     }
 	
+	@FXML 
+	private ToggleGroup levelButton;
+	
+	@FXML
+	private void selectedRadioBtn() {
+		RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
+		String subjectName = subjectField.getText();
+		
+		if (selected == null) {
+			System.out.println("Please select a level");
+			return;
+		}
+		
+		
+		String level = selected.getText(); //either higher or ordinary
+		
+		Subject newSubject = new Subject(subjectName, level);
+		
+		SubjectManager.subjects.add(newSubject);
+		
+		System.out.println("subject add: " + subjectName + "(" + level + ")");
+	}
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
@@ -142,7 +165,7 @@ public class SceneController {
 	}
 	
 	public void addSubjectAndReturn(ActionEvent event) throws IOException{
-		String name = subjectNameField.getText();
+		String name = subjectField.getText();
 		String level = "Ordinary";
 		
 		if (higherBtn.isSelected()) {
