@@ -35,23 +35,37 @@ public class SceneController {
 	private VBox subjectsContainer;
 	
 	@FXML
+	private Text noSubjectsText;
+	
+	@FXML
 	public void initialize() {
-
-		System.out.println(subjectsContainer);
+		//TEST PRINT
+		// System.out.println(subjectsContainer);
 		
 	    // Example data
+		/*
 		if (SubjectManager.subjects.isEmpty()) {
 
 	        Subject maths = new Subject("Maths", "Higher");
-	        maths.addGrade(new Grade(GradeType.CLASS_TEST, 80));
-	        maths.addGrade(new Grade(GradeType.EXAM, 90));
+	       maths.addGrade(new Grade(GradeType.CLASS_TEST, 80));
+	       maths.addGrade(new Grade(GradeType.EXAM, 90));
 
 	        SubjectManager.subjects.add(maths);
 	    }
+	    */
 		
 	    if (subjectsContainer == null) {
 	        return;
 	    }
+	    
+	    if (SubjectManager.subjects.isEmpty()) {
+	    	noSubjectsText.setVisible(true);
+	    	subjectsContainer.setVisible(false);
+	    	return;
+	    }
+	    
+	    noSubjectsText.setVisible(false);
+	    subjectsContainer.setVisible(true);
 	    
 		for (Subject s : SubjectManager.subjects) {
 
