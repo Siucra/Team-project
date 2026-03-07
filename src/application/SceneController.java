@@ -52,6 +52,10 @@ public class SceneController {
 		//TEST PRINT
 		// System.out.println(subjectsContainer);
 		
+	    if (subjectsContainer == null) {
+	        return;
+	    }
+	    
 	    // Example data
 		subjectsContainer.setSpacing(15);
 		
@@ -70,9 +74,6 @@ public class SceneController {
 	        SubjectManager.subjects.add(english);
 	    }
 		
-	    if (subjectsContainer == null) {
-	        return;
-	    }
 	    
 	    if (SubjectManager.subjects.isEmpty()) {
 	        emptyStateBox.setVisible(true);
