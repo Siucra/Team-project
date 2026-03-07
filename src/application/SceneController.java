@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
@@ -38,33 +39,42 @@ public class SceneController {
 	private Text noSubjectsText;
 	
 	@FXML
+	private VBox emptyStateBox;
+	
+	@FXML
 	public void initialize() {
 		//TEST PRINT
 		// System.out.println(subjectsContainer);
 		
 	    // Example data
-		/*
-		if (SubjectManager.subjects.isEmpty()) {
+		
+		 if (SubjectManager.subjects.isEmpty()) {
 
 	        Subject maths = new Subject("Maths", "Higher");
 	       maths.addGrade(new Grade(GradeType.CLASS_TEST, 80));
 	       maths.addGrade(new Grade(GradeType.EXAM, 90));
 
+	       //second subject 
+	       Subject english = new Subject("English","Ordinary");
+	       english.addGrade(new Grade(GradeType.MOCK_EXAM,60));
+	       english.addGrade(new Grade(GradeType.ASSIGNMENT,70));
+	       
 	        SubjectManager.subjects.add(maths);
+	        SubjectManager.subjects.add(english);
 	    }
-	    */
+	    
 		
 	    if (subjectsContainer == null) {
 	        return;
 	    }
 	    
 	    if (SubjectManager.subjects.isEmpty()) {
-	    	noSubjectsText.setVisible(true);
-	    	subjectsContainer.setVisible(false);
-	    	return;
+	        emptyStateBox.setVisible(true);
+	        subjectsContainer.setVisible(false);
+	        return;
 	    }
 	    
-	    noSubjectsText.setVisible(false);
+	    emptyStateBox.setVisible(false);
 	    subjectsContainer.setVisible(true);
 	    
 		for (Subject s : SubjectManager.subjects) {
@@ -74,9 +84,16 @@ public class SceneController {
             Text subjectAverage = new Text(
                 String.format("%.1f%%", s.getAverage())
             );
+            
+            Button editBtn = new Button("Edit");
+            
+            editBtn.setOnAction(e -> {
+                System.out.println("Edit subject: " + s.getName());
+                // later this will open  edit screen
+            });
 
             HBox row = new HBox(20);
-            row.getChildren().addAll(subjectName, subjectAverage);
+            row.getChildren().addAll(subjectName, subjectAverage,editBtn);
 
             subjectsContainer.getChildren().add(row);
         }
@@ -87,6 +104,7 @@ public class SceneController {
 		root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -95,6 +113,7 @@ public class SceneController {
 		root = FXMLLoader.load(getClass().getResource("AddSubject.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -112,4 +131,6 @@ public class SceneController {
 		
 		switchToSubjectScene(event);
 	}
+	
+	
 }

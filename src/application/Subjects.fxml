@@ -4,23 +4,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button layoutX="149.0" layoutY="169.0" mnemonicParsing="false" onAction="#switchToAddSubjectScene" style="-fx-background-color: black; -fx-text-fill: white;" text="Add" />
-      <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="288.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/editSymbol.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="39.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/backBtn.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="74.0" fitWidth="75.0" layoutX="131.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/profileIcon.png" />
@@ -31,7 +21,23 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <VBox fx:id="subjectsContainer" layoutX="117.0" layoutY="219.0" prefHeight="200.0" prefWidth="100.0" />
-      <Text fx:id="noSubjectsText" layoutX="115.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Subjects Added!" />
+      <Button layoutX="270.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchToAddSubjectScene" styleClass="add-button" text="+">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <VBox fx:id="subjectsContainer" layoutX="117.0" layoutY="266.0" prefHeight="200.0" prefWidth="100.0" />
+      <StackPane layoutX="67.0" layoutY="142.0" prefHeight="74.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="emptyStateBox" alignment="CENTER" prefHeight="63.0" prefWidth="200.0" styleClass="empty-bubble">
+               <children>
+                  <Text fx:id="noSubjectsText" strokeType="OUTSIDE" strokeWidth="0.0" text="No Subjects Added!">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
