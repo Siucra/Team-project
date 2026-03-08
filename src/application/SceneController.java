@@ -15,10 +15,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import javafx.geometry.Pos;
-
+import java.util.ArrayList;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -28,6 +27,8 @@ public class SceneController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	public static ArrayList<Subject> subject = new ArrayList<>();
 	
 	@FXML 
 	private TextField subjectField;
@@ -175,6 +176,8 @@ public class SceneController {
 		SubjectManager.subjects.add(subject);
 		
 		switchToSubjectScene(event);
+		
+		System.out.println(subject.getName());
 	}
 	
 	

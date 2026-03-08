@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button layoutX="253.0" layoutY="79.0" mnemonicParsing="false" onAction="#switchToSubjectScene" style="-fx-background-color: black; -fx-text-fill: white;" text="Done" />
+      <Button layoutX="253.0" layoutY="79.0" mnemonicParsing="false" onAction="#addSubjectAndReturn" style="-fx-background-color: black; -fx-text-fill: white;" text="Done" />
       <TextField fx:id="subjectField" layoutX="82.0" layoutY="275.0" prefHeight="25.0" prefWidth="165.0" promptText="Subject name (Eg. English)" />
       <Text layoutX="104.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new subject" textAlignment="CENTER" wrappingWidth="121.0">
          <font>
