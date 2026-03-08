@@ -94,9 +94,7 @@ public class SceneController {
 
 			VBox subjectText = new VBox(3);
 			subjectText.setAlignment(Pos.CENTER);
-			subjectText.getChildren().addAll(subjectName, subjectAverage);
-			
-			
+			subjectText.getChildren().addAll(subjectName, subjectAverage);	
             
             Image editIcon = new Image(getClass().getResourceAsStream("images/editSymbol.png"));
             ImageView editView = new ImageView(editIcon);
