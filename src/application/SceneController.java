@@ -18,6 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.geometry.Pos;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -74,7 +77,6 @@ public class SceneController {
 	        SubjectManager.subjects.add(maths);
 	        SubjectManager.subjects.add(english);
 	    }
-		
 	    
 	    if (SubjectManager.subjects.isEmpty()) {
 	        emptyStateBox.setVisible(true);
@@ -131,19 +133,11 @@ public class SceneController {
 		RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
 		String subjectName = subjectField.getText();
 		
-		if (selected == null) {
-			System.out.println("Please select a level");
-			return;
-		}
-		
-		
-		String level = selected.getText(); //either higher or ordinary
+		String level = selected.getText();
 		
 		Subject newSubject = new Subject(subjectName, level);
 		
 		SubjectManager.subjects.add(newSubject);
-		
-		System.out.println("subject add: " + subjectName + "(" + level + ")");
 	}
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
@@ -166,10 +160,30 @@ public class SceneController {
 	
 	public void addSubjectAndReturn(ActionEvent event) throws IOException{
 		String name = subjectField.getText();
-		String level = "Ordinary";
-		
+		if (!higherBtn.isSelected() && !ordinaryBtn.isSelected()) {
+		    JOptionPane.showMessageDialog(null, "Please select a level", "No level was selected.", JOptionPane.ERROR_MESSAGE);
+		    return;
+		}
+
+		String level;
 		if (higherBtn.isSelected()) {
-			level = "Higher";
+		    level = "Higher";
+		} else {
+		    level = "Ordinary";
+		}
+		
+		String input = subjectField.getText();
+		input = input.toUpperCase().replace(" ", "_");
+		
+		SubjectName subjectName;
+
+		try {
+		    subjectName = SubjectName.valueOf(input);
+		}
+		catch (IllegalArgumentException e) {
+			JOptionPane.showMessageDialog (null, "Please enter a valid subject.", "Subject Does not exist",
+			        JOptionPane.ERROR_MESSAGE);
+		    return;
 		}
 		
 		Subject subject = new Subject(name, level);
@@ -177,8 +191,55 @@ public class SceneController {
 		
 		switchToSubjectScene(event);
 		
-		System.out.println(subject.getName());
-	}
-	
-	
+		System.out.println(subject.getName()+", " + subject.getLevel());
+	}	
+}
+
+enum SubjectName {
+    CONSTRUCTION_TECHNOLOGY,
+    ENGINEERING,
+    PHYSICAL_EDUCATION,
+    TECHNOLOGY,
+    AGRICULTURAL_SCIENCE,
+    APPLIED_MATHS,
+    BIOLOGY,
+    CHEMISTRY,
+    MATHEMATICS,
+    MATHS,
+    PHYSICS,
+    PHYSICS_AND_CHEMISTRY,
+    COMPUTER_SCIENCE,
+    ART,
+    DRAMA_FILM_AND_THEATRE_STUDIES,
+    MUSIC,
+    DESIGN_AND_COMM_GRAPHICS,
+    ARABIC,
+    CLASSICAL_STUDIES,
+    ENGLISH,
+    FRENCH,
+    IRISH,
+    GERMAN,
+    HEBREW_STUDIES,
+    HISTORY,
+    UKRAINIAN,
+    ITALIAN,
+    JAPANESE,
+    LATIN,
+    RUSSIAN,
+    SPANISH,
+    OTHER_LANGUAGE,
+    ANCIENT_GREEK,
+    MANDARIN_CHINESE,
+    POLISH,
+    LITHUANIAN,
+    PORTUGUESE,
+    GEOGRAPHY,
+    CLIMATE_ACTION_AND_SUSTAINABLE_DEVELOPMENT,
+    HOME_ECONOMICS,
+    RELIGIOUS_EDUCATION,
+    POLITICS_AND_SOCIETY,
+    ACCOUNTING,
+    BUSINESS,
+    ECONOMICS,
+    LCVP
 }
