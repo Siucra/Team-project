@@ -5,8 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.PasswordField?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="329.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="329.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
    <children>
       <Label layoutX="91.0" layoutY="127.0" prefHeight="44.0" prefWidth="147.0" text="Create an Account">
          <font>
@@ -15,7 +16,7 @@
       </Label>
       <TextField fx:id="signUpEmail" layoutX="39.0" layoutY="244.0" onAction="#handleSignUp" prefHeight="25.0" prefWidth="245.0" promptText="email@domain.com" />
       <Label layoutX="39.0" layoutY="217.0" text="Email:" />
-      <TextField fx:id="signUpPassword" layoutX="39.0" layoutY="308.0" prefHeight="25.0" prefWidth="245.0" promptText="Enter your password" />
+      <PasswordField fx:id="signUpPassword" layoutX="39.0" layoutY="308.0" prefHeight="25.0" prefWidth="245.0" promptText="Enter your password" />
       <Label layoutX="39.0" layoutY="283.0" text="Password:" />
       <Button fx:id="signUpBtn" layoutX="39.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="245.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE" />
       <Label layoutX="67.0" layoutY="425.0" prefHeight="17.0" prefWidth="189.0" text="By clicking sign up, you agree to our  ">
