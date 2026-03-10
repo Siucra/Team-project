@@ -14,17 +14,28 @@ public class Login {
 
 
 @FXML
+	private TextField userEmail;
+
+@FXML
 private Button continueButton;
+
 @FXML
 private Label wrongLogin;
-@FXML
-private TextField userEmail;
 
-public void userLogin(ActionEvent event) throws IOException{
+@FXML
+private Button signUpButton;
+
+@FXML
+private Button nextButton;
+
+
+public void userLogin(ActionEvent event)
+	throws IOException{
 	checkLogin();
 }
 
-public void checkLogin()throws IOException {
+public void checkLogin()
+	throws IOException {
 	// Main m = new Main();
 	if(userEmail.getText().toString().equals("Javacoding")) {
 		wrongLogin.setText("Success!");
