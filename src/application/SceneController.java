@@ -111,8 +111,20 @@ public class SceneController {
             editBtn.setStyle("-fx-background-color: transparent;");
             
             editBtn.setOnAction(e -> {
-                System.out.println("Edit subject: " + s.getName());
-                // later this will open  edit screen
+
+                try {
+                    SubjectManager.selectedSubject = s;
+                    Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
+                    Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             });
 
             HBox row = new HBox(20);

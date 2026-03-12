@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="360.0" style="-fx-background-color: white;" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="740.0" prefWidth="360.0" style="-fx-background-color: white;" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GradesController">
 
     <!-- Top bar like mockup -->
     <top>
@@ -23,7 +23,7 @@
                 <Insets bottom="8" left="14" right="14" top="12" />
             </padding>
          <left>
-            <Button mnemonicParsing="false" text="←" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="←" onAction="#goBackToSubjects" BorderPane.alignment="CENTER" />
          </left>
          <right>
             <Button mnemonicParsing="false" text="✎" BorderPane.alignment="CENTER" />
@@ -40,7 +40,7 @@
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #777777;" text="Subject" VBox.vgrow="ALWAYS" />
-                        <Label prefHeight="27.0" prefWidth="51.0" text="English">
+                        <Label fx:id="subjectNameLabel" prefHeight="27.0" prefWidth="51.0" text="English">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -65,7 +65,7 @@
                </font></Label>
                 <Pane prefHeight="27.0" prefWidth="97.0" HBox.hgrow="ALWAYS">
                <children>
-                      <Label prefHeight="17.0" prefWidth="67.0" styleClass="card-value" text="79%">
+                      <Label fx:id="averageLabel" prefHeight="17.0" prefWidth="67.0" styleClass="card-value" text="79%">
                      <font>
                         <Font size="18.0" />
                      </font>
