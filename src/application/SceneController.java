@@ -62,7 +62,7 @@ public class SceneController {
 	    
 	    // Example data
 		subjectsContainer.setSpacing(15);
-		
+		/*
 		 if (SubjectManager.subjects.isEmpty()) {
 
 	        Subject maths = new Subject("Maths", "Higher");
@@ -77,7 +77,7 @@ public class SceneController {
 	        SubjectManager.subjects.add(maths);
 	        SubjectManager.subjects.add(english);
 	    }
-	    
+	    */
 	    if (SubjectManager.subjects.isEmpty()) {
 	        emptyStateBox.setVisible(true);
 	        subjectsContainer.setVisible(false);

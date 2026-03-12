@@ -39,7 +39,7 @@ public class AddGradeController {
         }
 
         if (scoreText.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter a score.", "Missing score",
+            JOptionPane.showMessageDialog(null, "Please enter a grade.", "Missing grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -49,13 +49,13 @@ public class AddGradeController {
         try {
             score = Double.parseDouble(scoreText);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Invalid score",
+            JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Invalid grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (score < 0 || score > 100) {
-            JOptionPane.showMessageDialog(null, "Score must be between 0 and 100.", "Invalid score",
+            JOptionPane.showMessageDialog(null, "Grade must be between 0 and 100.", "Invalid grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
