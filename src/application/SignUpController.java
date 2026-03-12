@@ -28,8 +28,9 @@ public class SignUpController {
 	
 	public static ArrayList<userLogin> usersdetails = new ArrayList<>();
 	
-	@FXML
-	    private void start(){
+
+	 @FXML
+	    private void handleSignUp(ActionEvent e) {
 		 
 		  String email = signUpEmail.getText();
 		  String password = signUpPassword.getText();
@@ -39,8 +40,8 @@ public class SignUpController {
 	        	return;
 	        } 
 	        
-	        if(!email.contains("@") || !email.contains(".")) {
-	        	messageLbl.setText("Sorry, your doesn't contain @ and .");
+	        if (!email.contains("@") || !email.contains(".")) {
+	        	messageLbl.setText("Sorry, your doesn't contain @ or .");
 	        	return;
 	        }
 	        
@@ -48,22 +49,29 @@ public class SignUpController {
 	        if(password == null || password.isEmpty()) {
 	        	messageLbl.setText("Please create a password");
 	        	return;
+	        	
+	        	
 	        } 
 	        
-	        if(password.length() < 6) {
+	        if (password.length() < 6) {
 	        	messageLbl.setText("Sorry, passowrd must have at least 6 characters");
 	        	return;
 	        }
 	        	
+	        
+	        for (userLogin login : usersdetails) {
+	        	if(login.getEmail().equals(email)) {
+	        		messageLbl.setText("Sorry, account already exists");
+		        	return;	
+	        	}
+	        }
 	        	userLogin newUserLogin = new userLogin(email, password);
 	        	usersdetails.add(newUserLogin);
 	        	
 	        	messageLbl.setText("Account created");
 	       
-	        }
 	        
-	 @FXML
-	    private void handleSignUp(ActionEvent e) {
+	        
 	    	
 	    	try {
 	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
@@ -74,10 +82,10 @@ public class SignUpController {
 	    		
 	    	} catch(IOException ev) {
 	    		ev.printStackTrace();
-	    	}
-	    	
 	    }
-
+	    	
 	 }
+}
+	 
 
 

@@ -24,7 +24,7 @@ public class LoginController {
     private PasswordField loginPassword;
 
     @FXML
-    private Label wrongLogin;
+    private Label loginMessage;
     
 	//@FXML
 	//private Label passwordEmpty;
@@ -37,22 +37,34 @@ public class LoginController {
     	
         String email = loginEmail.getText();
         String password = loginPassword.getText();
+        
+        for(userLogin login : SignUpController.usersdetails) {
 
         if (email == null || email.isEmpty()) {
-            wrongLogin.setText("Please enter an email.");
+        	loginMessage.setText("Please enter an email.");
+            return;
+        } 
+        
+        if(!email.contains("@") && !email.contains(".")) {
+        	loginMessage.setText("Sorry, your doesn't contain @ and .");
             return;
         } 
         
         
         if(password == null || password.isEmpty()) {
-        	wrongLogin.setText("Please enter a password");
+        	loginMessage.setText("Please enter a password");
         	return;
         }
         	
-        wrongLogin.setText("Login successful!");
-        
-     
-    }
+
+    
+        if(login.getEmail().equals(email) && login.getPassword().equals(password)){
+        	loginMessage.setText("Login successful!");
+        	return;
+        }
+        }
+        loginMessage.setText("Soryy, you have entered wrong email or password");
+   }
     
     @FXML
     private void openSignUp(ActionEvent e) {
