@@ -8,7 +8,8 @@ Users are prompted to log in when launching the application. If they do not alre
 When adding a subject, students can select from a list of Leaving Certificate subjects and choose the appropriate level (Ordinary or Higher) as each level corresponds to different point values. Users can also edit an existing subject by selecting it which allows them to add a test score, remove a test score or delete the subject entirely.
 
  --------------------CONFIGURATION  -------------------- 
-Requirements!!!
+ 
+- Requirements!!!
 Before running the project, make sure the following are installed:
 - Eclipse IDE
 - Gluon Scene Builder
@@ -77,7 +78,9 @@ Scene Builder is now connected to Eclipse.
 ------------ Reference Tutorials ------------
 
 The setup process was based on the following tutorials:
+
 https://www.youtube.com/watch?v=_7OM-cMYWbQ
+
 https://www.youtube.com/watch?v=-Obxf6NjnbQ
 
 This project is done by:
