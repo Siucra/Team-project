@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="360.0" style="-fx-background-color: white;" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="740.0" prefWidth="360.0" style="-fx-background-color: white;" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GradesController">
 
     <!-- Top bar like mockup -->
     <top>
@@ -23,16 +23,16 @@
                 <Insets bottom="8" left="14" right="14" top="12" />
             </padding>
          <left>
-            <Button mnemonicParsing="false" text="←" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="←" onAction="#goBackToSubjects" BorderPane.alignment="CENTER" />
          </left>
          <right>
             <Button mnemonicParsing="false" text="✎" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <VBox fillWidth="false" spacing="8.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" fillWidth="true" prefWidth="220.0" spacing="8.0" HBox.hgrow="ALWAYS">
                      <children>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                            <image>
@@ -40,7 +40,7 @@
                            </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #777777;" text="Subject" VBox.vgrow="ALWAYS" />
-                        <Label prefHeight="27.0" prefWidth="51.0" text="English">
+                        <Label fx:id="subjectNameLabel" alignment="CENTER" textAlignment="CENTER" text="" wrapText="false" prefWidth="-1" maxWidth="300.0">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -65,7 +65,7 @@
                </font></Label>
                 <Pane prefHeight="27.0" prefWidth="97.0" HBox.hgrow="ALWAYS">
                <children>
-                      <Label prefHeight="17.0" prefWidth="67.0" styleClass="card-value" text="79%">
+                      <Label fx:id="averageLabel" prefHeight="17.0" prefWidth="67.0" styleClass="card-value" text="79%">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -76,44 +76,15 @@
             </padding>
            </HBox>
 
-           <VBox spacing="10">
-
-    		<HBox spacing="10">
-		        <Label styleClass="grade-row" text="Poetry test" />
-		        <Pane HBox.hgrow="ALWAYS" />
-		        <Label text="75%" />
-		        <Label styleClass="icon-muted" text="🗑" />
-		        <Label text="›" />
-    		</HBox>
-
-    		<HBox spacing="10">
-		        <Label styleClass="grade-row" text="Test paper 1" />
-		        <Pane HBox.hgrow="ALWAYS" />
-		        <Label text="80%" />
-		        <Label styleClass="icon-muted" text="🗑" />
-		        <Label text="›" />
-    		</HBox>
-
-    		<HBox spacing="10">
-		        <Label styleClass="grade-row" text="Shakespeare test" />
-		        <Pane HBox.hgrow="ALWAYS" />
-		        <Label text="89%" />
-		        <Label styleClass="icon-muted" text="🗑" />
-		        <Label text="›" />
-    		</HBox>
-            <styleClass>
-               <String fx:value="content" />
-               <String fx:value="card" />
-            </styleClass>
-
-		</VBox>
+         <VBox fx:id="gradesContainer" spacing="10"/>
+           
          <Region prefHeight="100.0" prefWidth="200.0" />
 
             <Label styleClass="status" text="" />
 
             <!-- Buttons -->
             <HBox prefHeight="26.0" prefWidth="360.0" spacing="14" styleClass="bottom-actions">
-                <Button maxWidth="1.7976931348623157E308" styleClass="pill-btn" text="Add Grade" HBox.hgrow="ALWAYS" />
+                <Button maxWidth="1.7976931348623157E308" styleClass="pill-btn" text="Add Grade" HBox.hgrow="ALWAYS" onAction="#switchToAddGradeScene" />
                 <Button maxWidth="1.7976931348623157E308" pickOnBounds="false" styleClass="pill-btn" text="Edit Grade" HBox.hgrow="ALWAYS" />
             </HBox>
          <padding>

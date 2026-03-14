@@ -15,9 +15,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import javafx.geometry.Pos;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
@@ -28,6 +30,8 @@ public class SceneController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	public static ArrayList<Subject> subject = new ArrayList<>();
 	
 	@FXML 
 	private TextField subjectField;
@@ -58,7 +62,7 @@ public class SceneController {
 	    
 	    // Example data
 		subjectsContainer.setSpacing(15);
-		
+		/*
 		 if (SubjectManager.subjects.isEmpty()) {
 
 	        Subject maths = new Subject("Maths", "Higher");
@@ -73,8 +77,7 @@ public class SceneController {
 	        SubjectManager.subjects.add(maths);
 	        SubjectManager.subjects.add(english);
 	    }
-		
-	    
+	    */
 	    if (SubjectManager.subjects.isEmpty()) {
 	        emptyStateBox.setVisible(true);
 	        subjectsContainer.setVisible(false);
@@ -106,8 +109,20 @@ public class SceneController {
             editBtn.setStyle("-fx-background-color: transparent;");
             
             editBtn.setOnAction(e -> {
-                System.out.println("Edit subject: " + s.getName());
-                // later this will open  edit screen
+
+                try {
+                    SubjectManager.selectedSubject = s;
+                    Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
+                    Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             });
 
             HBox row = new HBox(20);
@@ -128,19 +143,11 @@ public class SceneController {
 		RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
 		String subjectName = subjectField.getText();
 		
-		if (selected == null) {
-			System.out.println("Please select a level");
-			return;
-		}
-		
-		
-		String level = selected.getText(); //either higher or ordinary
+		String level = selected.getText();
 		
 		Subject newSubject = new Subject(subjectName, level);
 		
 		SubjectManager.subjects.add(newSubject);
-		
-		System.out.println("subject add: " + subjectName + "(" + level + ")");
 	}
 	
 	public void switchToSubjectScene(ActionEvent event) throws IOException{
@@ -163,17 +170,86 @@ public class SceneController {
 	
 	public void addSubjectAndReturn(ActionEvent event) throws IOException{
 		String name = subjectField.getText();
-		String level = "Ordinary";
-		
+		if (!higherBtn.isSelected() && !ordinaryBtn.isSelected()) {
+		    JOptionPane.showMessageDialog(null, "Please select a level", "No level was selected.", JOptionPane.ERROR_MESSAGE);
+		    return;
+		}
+
+		String level;
 		if (higherBtn.isSelected()) {
-			level = "Higher";
+		    level = "Higher";
+		} else {
+		    level = "Ordinary";
+		}
+		
+		String input = subjectField.getText();
+		input = input.toUpperCase().replace(" ", "_");
+		
+		SubjectName subjectName;
+
+		try {
+		    subjectName = SubjectName.valueOf(input);
+		}
+		catch (IllegalArgumentException e) {
+			JOptionPane.showMessageDialog (null, "Please enter a valid subject.", "Subject Does not exist",
+			        JOptionPane.ERROR_MESSAGE);
+		    return;
 		}
 		
 		Subject subject = new Subject(name, level);
 		SubjectManager.subjects.add(subject);
 		
 		switchToSubjectScene(event);
-	}
-	
-	
+		
+		System.out.println(subject.getName()+", " + subject.getLevel());
+	}	
+}
+
+enum SubjectName {
+    CONSTRUCTION_TECHNOLOGY,
+    ENGINEERING,
+    PHYSICAL_EDUCATION,
+    TECHNOLOGY,
+    AGRICULTURAL_SCIENCE,
+    APPLIED_MATHS,
+    BIOLOGY,
+    CHEMISTRY,
+    MATHEMATICS,
+    MATHS,
+    PHYSICS,
+    PHYSICS_AND_CHEMISTRY,
+    COMPUTER_SCIENCE,
+    ART,
+    DRAMA_FILM_AND_THEATRE_STUDIES,
+    MUSIC,
+    DESIGN_AND_COMM_GRAPHICS,
+    ARABIC,
+    CLASSICAL_STUDIES,
+    ENGLISH,
+    FRENCH,
+    IRISH,
+    GERMAN,
+    HEBREW_STUDIES,
+    HISTORY,
+    UKRAINIAN,
+    ITALIAN,
+    JAPANESE,
+    LATIN,
+    RUSSIAN,
+    SPANISH,
+    OTHER_LANGUAGE,
+    ANCIENT_GREEK,
+    MANDARIN_CHINESE,
+    POLISH,
+    LITHUANIAN,
+    PORTUGUESE,
+    GEOGRAPHY,
+    CLIMATE_ACTION_AND_SUSTAINABLE_DEVELOPMENT,
+    HOME_ECONOMICS,
+    RELIGIOUS_EDUCATION,
+    POLITICS_AND_SOCIETY,
+    ACCOUNTING,
+    BUSINESS,
+    ECONOMICS,
+    LCVP
 }
