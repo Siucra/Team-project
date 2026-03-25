@@ -43,7 +43,7 @@ public class AddGradeController {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot\libC:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot\lib
+       
         double score;
 
         try {
