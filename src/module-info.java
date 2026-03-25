@@ -1,7 +1,9 @@
 module GradeTrackerFX {
-    requires javafx.controls;
-    requires javafx.fxml;
-
-    opens application to javafx.fxml;
-    exports application;
+	requires javafx.controls;
+	requires javafx.fxml;
+	requires javafx.graphics;
+	requires java.desktop;
+	
+	opens application to javafx.graphics, javafx.fxml;
+	exports application;   
 }
