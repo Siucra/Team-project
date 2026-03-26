@@ -59,7 +59,6 @@ public class SceneController {
 
         subjectsContainer.setSpacing(15);
 
-        subjectService.addExampleData();
 
         if (subjectService.getSubjects().isEmpty()) {
             emptyStateBox.setVisible(true);
@@ -128,7 +127,6 @@ public class SceneController {
 
     @FXML
     private void selectedRadioBtn() {
-
         RadioButton selected = (RadioButton) levelButton.getSelectedToggle();
 
         if (selected == null) {
@@ -138,8 +136,6 @@ public class SceneController {
 
         String subjectName = subjectField.getText();
         String level = selected.getText();
-
-        subjectService.addSubject(subjectName, level);
 
         System.out.println("Subject added: " + subjectName + " (" + level + ")");
     }
@@ -172,11 +168,15 @@ public class SceneController {
 
     public void addSubjectAndReturn(ActionEvent event) throws IOException {
 
-        String name = subjectField.getText();
+        String name = subjectField.getText().trim();
         String level = "Ordinary";
 
         if (higherBtn.isSelected()) {
             level = "Higher";
+        }
+        
+        if(!name.isEmpty()) {
+        	subjectService.addSubject(name, level);
         }
 
         subjectService.addSubject(name, level);

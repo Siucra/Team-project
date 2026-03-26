@@ -3,6 +3,9 @@ package application;
 import java.util.List;
 
 public class SubjectService {
+	public SubjectService() {
+        SubjectManager.subjects = SubjectFileHandler.loadSubjects();
+    }
 
     public List<Subject> getSubjects() {
         return SubjectManager.subjects;
@@ -11,26 +14,11 @@ public class SubjectService {
     public void addSubject(String name, String level) {
         Subject subject = new Subject(name, level);
         SubjectManager.subjects.add(subject);
+        SubjectFileHandler.saveSubjects(SubjectManager.subjects);
     }
-
-    public void addExampleData() {
-        if (!SubjectManager.subjects.isEmpty()) {
-            return;
-        }
-
-        Subject maths = new Subject("Maths", "Higher");
-        maths.addGrade(new Grade(GradeType.CLASS_TEST, 80));
-        maths.addGrade(new Grade(GradeType.EXAM, 90));
-
-        Subject english = new Subject("English", "Ordinary");
-        english.addGrade(new Grade(GradeType.MOCK_EXAM, 60));
-        english.addGrade(new Grade(GradeType.ASSIGNMENT, 70));
-
-        SubjectManager.subjects.add(maths);
-        SubjectManager.subjects.add(english);
-    }
+}
     
-    enum SubjectName {
+    /* enum SubjectName {
         CONSTRUCTION_TECHNOLOGY,
         ENGINEERING,
         PHYSICAL_EDUCATION,
@@ -77,6 +65,4 @@ public class SubjectService {
         BUSINESS,
         ECONOMICS,
         LCVP
-    }
-
-}
+    } */

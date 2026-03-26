@@ -1,8 +1,11 @@
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Subject {
+public class Subject implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private String level;
 	private ArrayList<Grade> grades;
@@ -29,9 +32,7 @@ public class Subject {
 	}
 	
 	public double getAverage() {
-
 	    if (grades.isEmpty()) return 0;
-
 	    double total = 0;
 
 	    for (Grade g : grades) {
