@@ -23,9 +23,9 @@ public class DatabaseConnection {
 	        	//This tries to get a connection to the database
 	            conn = DriverManager.getConnection(url, user, password);
 	            System.out.println("Successfully connected ");
-	        } catch (SQLException e) {
+	        } catch (SQLException ev) {
 	        	//Prints this if the connection fails
-	            e.printStackTrace();
+	            ev.printStackTrace();
 	        }
 	        
 	        //This return the connection object

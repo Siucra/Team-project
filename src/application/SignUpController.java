@@ -64,12 +64,12 @@ public class SignUpController {
 	        
 	      
 	        
-	        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[@!£$%&*~#,.?]).+$") ) {
+	        if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@!£$%&*~#,.?]).+$") ) {
 	        	messageLbl.setText("Password is too Weak, must include upper, lower, number and special character");
 	        	return;
 	        }
 	        	
-	        
+	       /* 
 	        for (userLogin login : usersdetails) {
 	        	if(login.getEmail().equals(email)) {
 	        		messageLbl.setText("Sorry, account already exists");
@@ -83,9 +83,13 @@ public class SignUpController {
 	        	
 	        	messageLbl.setText("Account created");
 	       
+	        */
 	        
+	        UsersInfo users = new UsersInfo(email,password);
+	        boolean successful = Users.addUsers(email,password);
 	        
-	    	
+	        if (successful) {
+	    	// This Switches the page to Login if successful
 	    	try {
 	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 	    		Scene scene = new Scene(root);
@@ -97,8 +101,9 @@ public class SignUpController {
 	    		ev.printStackTrace();
 	    }
 	    	
+	 } else {
+		    messageLbl.setText("Could not create an account, Try again!");
+	 }
 	 }
 }
-	 
-
 

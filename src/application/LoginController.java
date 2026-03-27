@@ -33,7 +33,7 @@ public class LoginController {
 	//private Button openSignUpButton;
 
     @FXML
-    private void handleLogin() {
+    private void handleLogin(ActionEvent e) {
     	
         String email = loginEmail.getText();
         String password = loginPassword.getText();
@@ -64,10 +64,12 @@ public class LoginController {
         }
         }
         loginMessage.setText("Soryy, you have entered wrong email or password");
-   }
+   
+    boolean successful = Users.loginVerify(email,password);
     
-    @FXML
-    private void openSignUp(ActionEvent e) {
+    if (successful) {
+    //@FXML
+    //private void openSignUp(ActionEvent e) {
     	
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml"));
@@ -79,6 +81,8 @@ public class LoginController {
     	} catch(IOException ev) {
     		ev.printStackTrace();
     	}
-    	
+    
     }
+//}
+}
 }
