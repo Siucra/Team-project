@@ -24,10 +24,14 @@
             <ToggleGroup fx:id="levelButton" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="ordinaryBtn" layoutX="55.0" layoutY="324.0" mnemonicParsing="false" text="Ordinary level " toggleGroup="$levelButton" />
-      <ImageView fx:id="backBtn" fitHeight="25.0" fitWidth="22.0" layoutX="39.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/backBtn.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="39.0" layoutY="80.0" mnemonicParsing="false" onAction="#switchToSubjectScene" style="-fx-background-color: transparent;">
+		  <graphic>
+		      <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+		         <image>
+		            <Image url="@images/backBtn.png" />
+		         </image>
+		      </ImageView>
+		   </graphic>
+	   </Button>
    </children>
 </AnchorPane>
