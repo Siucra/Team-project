@@ -1,6 +1,10 @@
 package application;
 
-public class Grade {
+import java.io.Serializable;
+
+public class Grade implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private GradeType type;
 	private double score;
 	
