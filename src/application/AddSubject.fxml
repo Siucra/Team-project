@@ -24,7 +24,7 @@
             <ToggleGroup fx:id="levelButton" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="ordinaryBtn" layoutX="55.0" layoutY="324.0" mnemonicParsing="false" text="Ordinary level " toggleGroup="$levelButton" />
-      <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="39.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" fx:id="backBtn">
+      <ImageView fx:id="backBtn" fitHeight="25.0" fitWidth="22.0" layoutX="39.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/backBtn.png" />
          </image>
