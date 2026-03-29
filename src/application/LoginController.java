@@ -72,7 +72,7 @@ public class LoginController {
     //private void openSignUp(ActionEvent e) {
     	
     	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("AddSubject.fxml"));
     		Scene scene = new Scene(root);
     		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
     		stage.setScene(scene);
