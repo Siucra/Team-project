@@ -16,6 +16,16 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/safia/Downloads/postgresql-42.7.3.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/safia/Desktop/javafx21/jdk-21.0.10+7/lib/jrt-fs.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/safia/Desktop/javafx17/javafx-sdk-17.0.18/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -52,11 +62,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/safia/Desktop/javafx17/javafx-sdk-17.0.18/lib/javafx-swt.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/safia/Downloads/postgresql-42.7.3.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
