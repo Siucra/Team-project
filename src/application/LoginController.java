@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
@@ -26,11 +27,9 @@ public class LoginController {
     @FXML
     private Label loginMessage;
     
-	//@FXML
-	//private Label passwordEmpty;
 	
-	//@FXML
-	//private Button openSignUpButton;
+	
+	
 
     @FXML
     private void handleLogin(ActionEvent e) {
@@ -68,8 +67,7 @@ public class LoginController {
     boolean successful = Users.loginVerify(email,password);
     
     if (successful) {
-    //@FXML
-    //private void openSignUp(ActionEvent e) {
+  
     	
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("AddSubject.fxml"));
@@ -83,6 +81,24 @@ public class LoginController {
     	}
     
     }
-//}
+    }
+    
+    @FXML
+	private Button SignUpBtn;
+    
+    @FXML
+    private void openSignUp(ActionEvent event) {
+        try {
+            // Load SignUpPage.fxml
+            Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ev) {
+            ev.printStackTrace();
+        }
+    
 }
 }
