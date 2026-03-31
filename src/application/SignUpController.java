@@ -69,15 +69,29 @@ public class SignUpController {
 	        	return;
 	        }
 	        	
-	      
+	       /* 
+	        for (userLogin login : usersdetails) {
+	        	if(login.getEmail().equals(email)) {
+	        		messageLbl.setText("Sorry, account already exists");
+		        	return;	
+	        	}
+	        }
 	        
-	        //UsersInfo users = new UsersInfo(email,password);
+	        
+	        	userLogin newUserLogin = new userLogin(email, password);
+	        	usersdetails.add(newUserLogin);
+	        	
+	        	messageLbl.setText("Account created");
+	       
+	        */
+	        
+	        UsersInfo users = new UsersInfo(email,password);
 	        boolean successful = Users.addUsers(email,password);
 	        
 	        if (successful) {
 	    	// This Switches the page to Login if successful
 	    	try {
-	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage1.fxml"));
+	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 	    		Scene scene = new Scene(root);
 	    		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
 	    		stage.setScene(scene);
