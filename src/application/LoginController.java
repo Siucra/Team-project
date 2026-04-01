@@ -60,27 +60,19 @@ public class LoginController {
     
         if(login.getEmail().equals(email) && login.getPassword().equals(password)){
         	loginMessage.setText("Login successful!");
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            
         	return;
         }
         }
-        loginMessage.setText("Sorry, you have entered wrong email or password");
-   }
+        loginMessage.setText("Soryy, you have entered wrong email or password");
+   
+    boolean successful = Users.loginVerify(email,password);
     
-    @FXML
-    private void openSignUp(ActionEvent e) {
+    if (successful) {
+    //@FXML
+    //private void openSignUp(ActionEvent e) {
     	
     	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("SignUpPage.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("AddSubject.fxml"));
     		Scene scene = new Scene(root);
     		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
     		stage.setScene(scene);
@@ -89,6 +81,8 @@ public class LoginController {
     	} catch(IOException ev) {
     		ev.printStackTrace();
     	}
-    	
+    
     }
+//}
+}
 }

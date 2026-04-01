@@ -43,7 +43,7 @@ public class AddGradeController {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+       
         double score;
 
         try {
