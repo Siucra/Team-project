@@ -45,7 +45,7 @@ public class LoginController {
         } 
         
         if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-        	loginMessage.setText("Sorry, your doesn't contain @ and .");
+        	loginMessage.setText("Sorry, your email doesn't contain @ and .");
             return;
         } 
         
