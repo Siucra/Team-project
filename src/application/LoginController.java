@@ -37,15 +37,15 @@ public class LoginController {
         String email = loginEmail.getText();
         String password = loginPassword.getText();
         
-        for(userLogin login : SignUpController.usersdetails) {
+        
 
         if (email == null || email.isEmpty()) {
         	loginMessage.setText("Please enter an email.");
             return;
         } 
         
-        if(!email.contains("@") || !email.contains(".")) {
-        	loginMessage.setText("Sorry, your doesn't contain @ and .");
+        if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+        	loginMessage.setText("Sorry, your email doesn't contain @ and .");
             return;
         } 
         
@@ -56,7 +56,7 @@ public class LoginController {
         }
         	
 
-    
+        for(userLogin login : SignUpController.usersdetails) {
         if(login.getEmail().equals(email) && login.getPassword().equals(password)){
         	loginMessage.setText("Login successful!");
         	return;
