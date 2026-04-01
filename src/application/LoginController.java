@@ -44,7 +44,7 @@ public class LoginController {
             return;
         } 
         
-        if(!email.contains("@") && !email.contains(".")) {
+        if(!email.contains("@") || !email.contains(".")) {
         	loginMessage.setText("Sorry, your doesn't contain @ and .");
             return;
         } 
