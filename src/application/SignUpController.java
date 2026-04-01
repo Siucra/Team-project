@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -105,5 +106,26 @@ public class SignUpController {
 		    messageLbl.setText("Could not create an account, Try again!");
 	 }
 	 }
+	 
+	 
+	 
+	    @FXML
+		private Button BackToLogin;
+	    
+	    @FXML
+	    private void openLogin(ActionEvent event) {
+	        try {
+	            // Load SignUpPage.fxml
+	            Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+	            Scene scene = new Scene(root);
+	            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+	            stage.setScene(scene);
+	            stage.show();
+
+	        } catch (IOException ev) {
+	            ev.printStackTrace();
+	        }
+	    
+	}
 }
 

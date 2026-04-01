@@ -30,5 +30,6 @@
          </font>
       </Label>
       <Label fx:id="messageLbl" layoutX="39.0" layoutY="92.0" prefHeight="25.0" prefWidth="272.0" textFill="#fd0505" />
+      <Button fx:id="BackToLogin" layoutX="14.0" layoutY="39.0" mnemonicParsing="false" onAction="#openLogin" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: black;" text="Back to Login" textFill="WHITE" />
    </children>
 </Pane>
