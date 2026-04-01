@@ -70,7 +70,7 @@ public class LoginController {
   
     	
     	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("AddSubject.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("Subject.fxml"));
     		Scene scene = new Scene(root);
     		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
     		stage.setScene(scene);
