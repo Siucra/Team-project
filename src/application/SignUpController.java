@@ -77,7 +77,7 @@ public class SignUpController {
 	        if (successful) {
 	    	// This Switches the page to Login if successful
 	    	try {
-	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage1.fxml"));
+	    		Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 	    		Scene scene = new Scene(root);
 	    		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
 	    		stage.setScene(scene);
