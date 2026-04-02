@@ -1,5 +1,6 @@
 package application;
 
+import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
@@ -48,24 +50,53 @@ public class GradesController{
 
                 for (Grade g : selected.getGrades()){
                     Label type = new Label(g.getType().toString());
-                    Label score = new Label(g.getScore() + "%");
+                    Label score = new Label(String.format("%.0f%%", g.getScore()));
+
+                    Button deleteBtn = new Button("🗑");
+                    deleteBtn.setStyle("-fx-background-color: transparent;");
+
+                    deleteBtn.setOnAction(e -> {
+                        int choice = JOptionPane.showConfirmDialog(
+                            null,
+                            "Delete this grade?",
+                            "Delete Grade",
+                            JOptionPane.YES_NO_OPTION
+                        );
+
+                        if (choice == JOptionPane.YES_OPTION){
+                            selected.getGrades().remove(g);
+                            SubjectFileHandler.saveSubjects(SubjectManager.subjects);
+
+                            try {
+                                Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
+                                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException ex){
+                                ex.printStackTrace();
+                            }
+                        }
+                    });
 
                     Pane spacer = new Pane();
                     HBox.setHgrow(spacer, Priority.ALWAYS);
 
                     HBox row = new HBox(10);
-                    row.getChildren().addAll(type, spacer, score);
-                    
+                    row.getChildren().addAll(type, spacer, score, deleteBtn);
+
                     row.setOnMouseClicked(e -> {
-                    	SubjectManager.selectedGrade = g;
-                    	
-                    	if (selectedRow != null) {
-                    		selectedRow.setStyle("");
-                    	}
-                    
-	                    selectedRow = row;
-	                    row.setStyle("-fx-background-color: #eeeeee; -fx-background-radius: 10;");
-	                    });
+                        SubjectManager.selectedGrade = g;
+
+                        if (selectedRow != null) {
+                            selectedRow.setStyle("");
+                        }
+
+                        selectedRow = row;
+                        row.setStyle("-fx-background-color: #eeeeee; -fx-background-radius: 10;");
+                    });
+
                     gradesContainer.getChildren().add(row);
                 }
             }
