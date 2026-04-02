@@ -14,6 +14,12 @@ public class Users {
 	      
 	      try {
 	       Connection conn = DatabaseConnection.connect();
+	       //Testing database connection
+	       if(conn == null) {
+	    	   System.out.println(" DB Connection Failed");
+	    	   return false;
+	       }
+	       
 	       PreparedStatement statement = conn.prepareStatement(sql);
 	       statement.setString(1, email);
 	       statement.setString(2, password);
@@ -37,8 +43,9 @@ public class Users {
 	      try {
 	       Connection conn = DatabaseConnection.connect();
 	       
+	       //Testing database connection
 	       if(conn == null) {
-	    	   System.out.println("Connection Failed");
+	    	   System.out.println("DB Connection Failed");
 	    	   return false;
 	       }
 	       
