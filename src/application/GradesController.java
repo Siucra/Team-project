@@ -15,7 +15,8 @@ import javafx.scene.layout.Priority;
 
 import java.io.IOException;
 
-public class GradesController {
+public class GradesController{
+	private HBox selectedRow;
 	
 	@FXML
 	private VBox gradesContainer;
@@ -27,22 +28,22 @@ public class GradesController {
     private Label averageLabel;
 
     @FXML
-    public void initialize() {
+    public void initialize(){
         Subject selected = SubjectManager.selectedSubject;
 
-        if (selected != null) {
-            if (subjectNameLabel != null) {
+        if (selected != null){
+            if (subjectNameLabel != null){
                 subjectNameLabel.setText(selected.getName());
             }
 
-            if (averageLabel != null) {
+            if (averageLabel != null){
                 averageLabel.setText(String.format("%.1f%%", selected.getAverage()));
             }
             
-            if (gradesContainer != null) {
+            if (gradesContainer != null){
                 gradesContainer.getChildren().clear();
 
-                for (Grade g : selected.getGrades()) {
+                for (Grade g : selected.getGrades()){
                     Label type = new Label(g.getType().toString());
                     Label score = new Label(g.getScore() + "%");
 
@@ -51,7 +52,17 @@ public class GradesController {
 
                     HBox row = new HBox(10);
                     row.getChildren().addAll(type, spacer, score);
-
+                    
+                    row.setOnMouseClicked(e -> {
+                    	SubjectManager.selectedGrade = g;
+                    	
+                    	if (selectedRow != null) {
+                    		selectedRow.setStyle("");
+                    	}
+                    
+	                    selectedRow = row;
+	                    row.setStyle("-fx-background-color: #eeeeee; -fx-background-radius: 10;");
+	                    });
                     gradesContainer.getChildren().add(row);
                 }
             }
