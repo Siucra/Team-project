@@ -29,6 +29,9 @@ public class GradesController{
 
     @FXML
     public void initialize(){
+    	SubjectManager.selectedGrade = null;
+        selectedRow = null;
+    	
         Subject selected = SubjectManager.selectedSubject;
 
         if (selected != null){
