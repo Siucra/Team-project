@@ -11,6 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			SubjectManager.subjects = SubjectFileHandler.loadSubjects();
 			//CHANGE LATER
 			Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene scene = new Scene(root);
