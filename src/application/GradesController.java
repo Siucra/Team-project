@@ -85,4 +85,25 @@ public class GradesController{
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    public void switchToEditGradeScene(ActionEvent event) throws IOException{
+
+        if (SubjectManager.selectedGrade == null){
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Please select a grade first",
+                "No Grade Selected",
+                javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        Parent root = FXMLLoader.load(getClass().getResource("EditGrade.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
 }
