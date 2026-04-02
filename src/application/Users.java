@@ -36,6 +36,12 @@ public class Users {
 	      
 	      try {
 	       Connection conn = DatabaseConnection.connect();
+	       
+	       if(conn == null) {
+	    	   System.out.println("Connection Failed");
+	    	   return false;
+	       }
+	       
 	       PreparedStatement statement = conn.prepareStatement(sql);
 	       statement.setString(1, email);
 	       statement.setString(2, password);
