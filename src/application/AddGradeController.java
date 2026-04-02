@@ -64,6 +64,7 @@ public class AddGradeController {
 
         if (selectedSubject != null) {
             selectedSubject.addGrade(new Grade(selectedType, score));
+            SubjectFileHandler.saveSubjects(SubjectManager.subjects);
         }
 
         Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
