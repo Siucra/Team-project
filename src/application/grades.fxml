@@ -85,7 +85,7 @@
             <!-- Buttons -->
             <HBox prefHeight="26.0" prefWidth="360.0" spacing="14" styleClass="bottom-actions">
                 <Button maxWidth="1.7976931348623157E308" styleClass="pill-btn" text="Add Grade" HBox.hgrow="ALWAYS" onAction="#switchToAddGradeScene" />
-                <Button maxWidth="1.7976931348623157E308" pickOnBounds="false" styleClass="pill-btn" text="Edit Grade" HBox.hgrow="ALWAYS" onAction="#switchToEditGradeScene" />
+                <Button maxWidth="1.7976931348623157E308" pickOnBounds="false" styleClass="pill-btn" text="Edit Grade" HBox.hgrow="ALWAYS" />
             </HBox>
          <padding>
             <Insets bottom="20.0" left="20.0" right="30.0" top="20.0" />
