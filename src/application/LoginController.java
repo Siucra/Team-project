@@ -33,56 +33,40 @@ public class LoginController {
 
     @FXML
     private void handleLogin(ActionEvent e) {
-    	
         String email = loginEmail.getText();
         String password = loginPassword.getText();
-        
-        
 
         if (email == null || email.isEmpty()) {
-        	loginMessage.setText("Please enter an email.");
+            loginMessage.setText("Please enter an email.");
             return;
-        } 
-        
-        if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-        	loginMessage.setText("Sorry, your email doesn't contain @ and .");
-            return;
-        } 
-        
-        
-        if(password == null || password.isEmpty()) {
-        	loginMessage.setText("Please enter a password");
-        	return;
         }
-        	
 
-        for(userLogin login : SignUpController.usersdetails) {
-        if(login.getEmail().equals(email) && login.getPassword().equals(password)){
-        	loginMessage.setText("Login successful!");
-        	return;
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            loginMessage.setText("Please enter a valid email.");
+            return;
         }
+
+        if (password == null || password.isEmpty()) {
+            loginMessage.setText("Please enter a password");
+            return;
         }
-        loginMessage.setText("Soryy, you have entered wrong email or password");
-   
-    boolean successful = Users.loginVerify(email,password);
-    
-    if (successful) {
-  
-    	
-    	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
-    		Scene scene = new Scene(root);
-    		Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
-    		stage.setScene(scene);
-    		stage.show();
-    		
-    	} catch(IOException ev) {
-    		ev.printStackTrace();
-    	}
-    
+
+        boolean successful = Users.loginVerify(email, password);
+
+        if (successful) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("Subjects.fxml"));
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ev) {
+                ev.printStackTrace();
+            }
+        } else {
+            loginMessage.setText("Sorry, wrong email or password.");
+        }
     }
-    }
-    
     @FXML
 	private Button SignUpBtn;
     
