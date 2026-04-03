@@ -7,27 +7,3 @@
     -fx-border-color: #dddddd;
 }
 
-/*Add subject button styling */
-.add-button {
-    -fx-background-color: #f7f7f7;
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
-    -fx-border-color: #e3e3e3;
-    -fx-border-width: 1;
-
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-
-    -fx-text-fill: black;
-
-    -fx-min-width: 40;
-    -fx-min-height: 40;
-}
-
-.add-button:hover {
-    -fx-background-color: #eeeeee;
-}
-
-.add-button:pressed {
-    -fx-background-color: #e6e6e6;
-}
