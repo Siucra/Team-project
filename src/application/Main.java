@@ -6,12 +6,11 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//CHANGE LATER
+			SubjectManager.subjects = SubjectFileHandler.loadSubjects();
 			Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

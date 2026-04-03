@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import javax.swing.JOptionPane;
 
-public class AddGradeController {
+public class AddGradeController{
 
     @FXML
     private ComboBox<GradeType> gradeTypeBox;
@@ -24,21 +24,21 @@ public class AddGradeController {
     private TextField scoreField;
 
     @FXML
-    public void initialize() {
+    public void initialize(){
         gradeTypeBox.setItems(FXCollections.observableArrayList(GradeType.values()));
     }
 
-    public void addGradeAndReturn(ActionEvent event) throws IOException {
+    public void addGradeAndReturn(ActionEvent event) throws IOException{
         GradeType selectedType = gradeTypeBox.getValue();
         String scoreText = scoreField.getText();
 
-        if (selectedType == null) {
+        if (selectedType == null){
             JOptionPane.showMessageDialog(null, "Please select a grade type.", "Missing grade type",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (scoreText.isEmpty()) {
+        if (scoreText.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter a grade.", "Missing grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
@@ -46,15 +46,15 @@ public class AddGradeController {
        
         double score;
 
-        try {
+        try{
             score = Double.parseDouble(scoreText);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Invalid grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (score < 0 || score > 100) {
+        if (score < 0 || score > 100){
             JOptionPane.showMessageDialog(null, "Grade must be between 0 and 100.", "Invalid grade",
                     JOptionPane.ERROR_MESSAGE);
             return;
@@ -62,8 +62,9 @@ public class AddGradeController {
 
         Subject selectedSubject = SubjectManager.selectedSubject;
 
-        if (selectedSubject != null) {
+        if (selectedSubject != null){
             selectedSubject.addGrade(new Grade(selectedType, score));
+            SubjectFileHandler.saveSubjects(SubjectManager.subjects);
         }
 
         Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
@@ -74,7 +75,7 @@ public class AddGradeController {
         stage.show();
     }
 
-    public void goBackToGrades(ActionEvent event) throws IOException {
+    public void goBackToGrades(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("grades.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
