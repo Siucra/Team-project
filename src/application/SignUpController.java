@@ -86,7 +86,7 @@ public class SignUpController {
 	       
 	        */
 	        
-	       // UsersInfo users = new UsersInfo(email,password);
+	        UsersInfo users = new UsersInfo(email,password);
 	        boolean successful = Users.addUsers(email,password);
 	        
 	        if (successful) {
