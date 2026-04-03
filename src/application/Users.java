@@ -9,7 +9,7 @@ public class Users {
  
 	public static boolean addUsers(String email, String password){
 		
-	      String sql = ("INSERT INTO userAccounts (email, password) VALUES(?, ?) ");
+	      String sql = ("INSERT INTO useraccounts (email, password) VALUES(?, ?) ");
 	      
 	      
 	      try {
@@ -17,7 +17,7 @@ public class Users {
 	       PreparedStatement statement = conn.prepareStatement(sql);
 	       statement.setString(1, email);
 	       statement.setString(2, password);
-	       statement.execute();
+	       statement.executeUpdate();
 	       statement.close();
 	       conn.close();
 	       return true;
@@ -26,12 +26,13 @@ public class Users {
 	          e.printStackTrace();
 	          return false;
 	      }
+	    
 	      
 	}
 	
 	public static boolean loginVerify(String email, String password){
 		
-	      String sql = ("SELECT * FROM userAccounts where email = ? and Password = ?");
+	      String sql = ("SELECT * FROM useraccounts where email = ? and password = ?");
 	      
 	      
 	      try {
@@ -39,7 +40,7 @@ public class Users {
 	       PreparedStatement statement = conn.prepareStatement(sql);
 	       statement.setString(1, email);
 	       statement.setString(2, password);
-	       ResultSet result =statement.executeQuery();
+	       ResultSet result = statement.executeQuery();
 	      
 	       return result.next();
 	      
