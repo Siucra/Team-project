@@ -10,19 +10,14 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
-   <children>
-	   <Button fx:id="deleteBtn" layoutX="240.0" layoutY="70.0" onAction="#toggleDeleteMode" style="-fx-background-color: transparent;" />
-      <ImageView fitHeight="74.0" fitWidth="75.0" layoutX="131.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/profileIcon.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="141.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subjects">
+	<children>
+	  <Button fx:id="deleteBtn" layoutX="47.0" layoutY="73.0" onAction="#toggleDeleteMode" style="-fx-background-color: transparent;" />
+      <Text layoutX="125.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subjects" wrappingWidth="83.4541015625">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Button layoutX="270.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchToAddSubjectScene" styleClass="add-button" text="+">
+      <Button layoutX="256.0" layoutY="98.0" mnemonicParsing="false" onAction="#switchToAddSubjectScene" styleClass="add-button" text="+">
          <font>
             <Font size="11.0" />
          </font>
@@ -40,7 +35,7 @@
             </VBox>
          </children>
       </StackPane>
-	        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="47.0" layoutY="73.0" preserveRatio="true">
+	        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="100.0" preserveRatio="true">
 	            <image>
 	                <Image url="@images/deleteBtn.png" />
 	            </image>
