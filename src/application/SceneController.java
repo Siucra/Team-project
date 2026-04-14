@@ -216,9 +216,7 @@ public class SceneController {
         }
         else{
         	JOptionPane.showMessageDialog(null, "Make sure the subject is valid, not already added, \n and/or you already have no more than 7 subjects."
-        			+ "","Unable to add subject",
-        		    JOptionPane.ERROR_MESSAGE
-        		);
+        		,"Unable to add subject", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
