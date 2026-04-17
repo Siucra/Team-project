@@ -78,4 +78,3 @@ public class SubjectServiceTest {
         assertEquals(0, SubjectManager.subjects.size());
     }
 }
-}
