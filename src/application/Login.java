@@ -1,51 +1,42 @@
+
 package application;
 
-import javafx.scene.control.Label;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import java.io.IOException;
-
-import javafx.scene.control.TextField;
+import java.util.ArrayList;
 
 public class Login {
 
-	public Login() {}
 
+	    public static String loginVerification(String email, String password) {
+	    	
+	    	//Created an Arraylist to store user login details 
+	    	ArrayList<userLogin> users = new ArrayList<>();
+	    	users.add(new userLogin("email@gmail.com", "Qwer1234."));
 
-@FXML
-	private TextField userEmail;
-
-@FXML
-private Button continueButton;
-
-@FXML
-private Label wrongLogin;
-
-@FXML
-private Button signUpButton;
-
-@FXML
-private Button nextButton;
-
-
-public void userLogin(ActionEvent event)
-	throws IOException{
-	checkLogin();
-}
-
-public void checkLogin()
-	throws IOException {
-	// Main m = new Main();
-	if(userEmail.getText().toString().equals("Javacoding")) {
-		wrongLogin.setText("Success!");
-		
-		
-	}else if(userEmail.getText().isEmpty()) {
-		wrongLogin.setText("Please enter your email");
-	}
-	else {
-		wrongLogin.setText("Wrong email!");
-	}
-}
+	    	//Checks if email is empty
+	        if (email == null || email.isEmpty()) {
+	            return "Please enter an email.";
+	        }
+	        
+	        //Checks if email format is correct
+	        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+	            return "Sorry, your email doesn't contain @ and .";
+	        }
+	        
+	        //Checks if password field is empty or null
+	        if (password == null || password.isEmpty()) {
+	            return "Please enter a password";
+	        }
+	        
+	        
+	        //This loops checks if email and password matches 
+	        for (userLogin login : users) {
+	            if (login.getEmail().equals(email) && login.getPassword().equals(password)) {
+	                return "Login successful!";
+	            }
+	        }
+	        
+	        //if there is no match found show error message
+	        return "Soryy, you have entered wrong email or password";
+	    }
+	
 }

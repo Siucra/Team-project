@@ -10,20 +10,15 @@ import org.junit.Test;
 
 //import loginAndSignUpTests.SignUp;
 
-class SignUpControllerTest {
-
-	@Test
-	void test() {
-		//fail("Not yet implemented");
-	}
+public class SignUpControllerTest {
 	
 
-    userLogin instance;
+    SignUp instance;
     int i = 0;
 
     @Before
     public void setUp() throws Exception {
-        instance = new userLogin();
+        instance = new SignUp();
         i += 1;
         System.out.println("Run: " + i);
     }
@@ -43,7 +38,7 @@ class SignUpControllerTest {
 
 
     // Testing for an invalid email
-    @Ignore
+    //@Ignore
     @Test
     public void testEmailInvalid() {
         System.out.println("Email not valid");
@@ -55,7 +50,7 @@ class SignUpControllerTest {
     }
 
     // Testing for an empty password field
-    @Ignore
+    //@Ignore
     @Test
     public void testPasswordEmpty() {
         System.out.println("Password is empty");
@@ -67,7 +62,7 @@ class SignUpControllerTest {
     }
 
     // Testing if a password is too short
-    @Ignore
+    //@Ignore
     @Test
     public void testLengthOfPassword() {
         System.out.println("Password length is short or too long");
@@ -79,6 +74,7 @@ class SignUpControllerTest {
     }
 
     // Testing for is a password is to weak
+    //@Ignore
     @Test
     public void testPasswordIsWeak() {
         System.out.println("Password is weak");
@@ -90,7 +86,7 @@ class SignUpControllerTest {
     }
 
     //Testing if signup is valid and successful
-    @Ignore
+    //@Ignore
     @Test
     public void testSignUpSuccessful() {
         System.out.println("Sign up is Successful");
